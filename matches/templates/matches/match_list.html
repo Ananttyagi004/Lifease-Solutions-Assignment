@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match List</title>
+    <style>
+        /* CSS Styling */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .match-list {
+            list-style: none;
+        }
+
+        .match-item {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .match-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .teams {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .team {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+        }
+
+        .team-a {
+            background-color: #2196F3;
+            color: #fff;
+        }
+
+        .team-b {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        .vs {
+            color: #333;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+        }
+
+        .match-time {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Upcoming Cricket Matches</h1>
+    </header>
+    
+    <main class="container">
+        <ul class="match-list">
+            {% for match in matches %}
+            <li class="match-item">
+                <div class="teams">
+                    <span class="team team-a">{{ match.team_a }}</span>
+                    <span class="vs">vs</span>
+                    <span class="team team-b">{{ match.team_b }}</span>
+                </div>
+                <div class="match-time">Match Time: {{ match.start_time|date:"D, d M Y H:i" }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>
